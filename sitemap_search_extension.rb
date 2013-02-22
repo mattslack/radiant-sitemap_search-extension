@@ -17,12 +17,6 @@ class SitemapSearchExtension < Radiant::Extension
     Layout.send :include, SitemapSearch::Model
     admin.layout.index.bottom.delete 'new_button'
     admin.layout.index.add :bottom, 'admin/search/layout_index_bottom'
-    if defined?(SnippetsExtension)
-      Snippet.send :include, SitemapSearch::Model
-      admin.snippet ||= Radiant::AdminUI.load_default_snippet_regions
-      admin.snippet.index.bottom.delete 'new_button'
-      admin.snippet.index.add :bottom, 'admin/search/snippet_index_bottom'
-    end
     if defined?(TemplatesExtension)
       Template.send :include, SitemapSearch::Model
       admin.template.index.bottom.delete 'new_button'
